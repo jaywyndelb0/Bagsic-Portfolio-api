@@ -1,58 +1,72 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="mb-5">
-    <h1 class="fw-bold text-dark">Welcome back, Admin!</h1>
-    <p class="text-muted">Here's what's happening in your portfolio.</p>
-</div>
+<div class="p-6 mx-auto">
+    <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900">Welcome back, Admin!</h1>
+        <p class="text-lg text-gray-600">Here's what's happening in your portfolio.</p>
+    </div>
 
-<div class="row g-4 mb-5">
-    <div class="col-md-3">
-        <div class="card p-4 h-100">
-            <div class="text-primary h1 mb-2">🚀</div>
-            <h3 class="fw-bold mb-0">{{ $stats['projects'] }}</h3>
-            <p class="text-muted small mb-0">Total Projects</p>
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center">
+                <div class="bg-blue-500 text-white rounded-full p-3">
+                    <i class="fas fa-rocket text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-3xl font-bold">{{ $stats['projects'] }}</h3>
+                    <p class="text-gray-600">Total Projects</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center">
+                <div class="bg-green-500 text-white rounded-full p-3">
+                    <i class="fas fa-bolt text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-3xl font-bold">{{ $stats['skills'] }}</h3>
+                    <p class="text-gray-600">Skills Listed</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center">
+                <div class="bg-yellow-500 text-white rounded-full p-3">
+                    <i class="fas fa-graduation-cap text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-3xl font-bold">{{ $stats['education'] }}</h3>
+                    <p class="text-gray-600">Education Entries</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center">
+                <div class="bg-indigo-500 text-white rounded-full p-3">
+                    <i class="fas fa-tools text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-3xl font-bold">{{ $stats['tech_stacks'] }}</h3>
+                    <p class="text-gray-600">Tech Stacks</p>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card p-4 h-100">
-            <div class="text-success h1 mb-2">⚡</div>
-            <h3 class="fw-bold mb-0">{{ $stats['skills'] }}</h3>
-            <p class="text-muted small mb-0">Skills Listed</p>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card p-4 h-100">
-            <div class="text-warning h1 mb-2">🎓</div>
-            <h3 class="fw-bold mb-0">{{ $stats['education'] }}</h3>
-            <p class="text-muted small mb-0">Education Entries</p>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card p-4 h-100">
-            <div class="text-info h1 mb-2">🛠️</div>
-            <h3 class="fw-bold mb-0">{{ $stats['tech_stacks'] }}</h3>
-            <p class="text-muted small mb-0">Tech Stacks</p>
-        </div>
-    </div>
-</div>
 
-<div class="card p-5 bg-white border-0">
-    <h3 class="fw-bold mb-4">Quick Links</h3>
-    <div class="row g-3">
-        <div class="col-md-4">
-            <a href="{{ route('admin.projects.index') }}" class="btn btn-light w-100 py-3 text-start ps-4 rounded-4 border-0">
-                <span class="me-2">➕</span> Add New Project
+    <!-- Quick Links -->
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-6">Quick Links</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="{{ route('admin.projects.index') }}" class="bg-blue-600 text-white text-center py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center">
+                <i class="fas fa-plus-circle mr-3"></i> Add New Project
             </a>
-        </div>
-        <div class="col-md-4">
-            <a href="{{ route('admin.skills.index') }}" class="btn btn-light w-100 py-3 text-start ps-4 rounded-4 border-0">
-                <span class="me-2">➕</span> Add New Skill
+            <a href="{{ route('admin.skills.index') }}" class="bg-green-600 text-white text-center py-4 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center">
+                <i class="fas fa-plus-circle mr-3"></i> Add New Skill
             </a>
-        </div>
-        <div class="col-md-4">
-            <a href="{{ route('admin.profile.index') }}" class="btn btn-light w-100 py-3 text-start ps-4 rounded-4 border-0">
-                <span class="me-2">✏️</span> Edit Profile
+            <a href="{{ route('admin.profile.index') }}" class="bg-yellow-600 text-white text-center py-4 px-6 rounded-lg font-semibold hover:bg-yellow-700 transition-colors flex items-center justify-center">
+                <i class="fas fa-edit mr-3"></i> Edit Profile
             </a>
         </div>
     </div>

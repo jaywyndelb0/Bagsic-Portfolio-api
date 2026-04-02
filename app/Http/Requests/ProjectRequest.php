@@ -28,7 +28,7 @@ class ProjectRequest extends FormRequest
             'technologies_used' => 'nullable|string|max:255',
             'github_url' => 'nullable|url|max:255',
             'live_url' => 'nullable|url|max:255',
-            'image' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'status' => 'nullable|string|max:255',
             'featured' => 'boolean',
         ];

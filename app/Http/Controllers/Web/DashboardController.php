@@ -39,7 +39,7 @@ class DashboardController extends Controller
             'full_name' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'bio' => 'required|string',
-            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'location' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
@@ -48,6 +48,8 @@ class DashboardController extends Controller
 
         if ($request->hasFile('profile_image')) {
             $validated['profile_image'] = $request->file('profile_image')->store('profile', 'public');
+        } else {
+            unset($validated['profile_image']);
         }
 
         Profile::updateOrCreate(['id' => 1], $validated);
@@ -141,6 +143,7 @@ class DashboardController extends Controller
 
     public function educationStore(Request $request)
     {
+        $request->merge(['is_current' => $request->has('is_current')]);
         $validated = $request->validate([
             'school_name' => 'required|string|max:255',
             'degree' => 'required|string|max:255',
@@ -158,6 +161,7 @@ class DashboardController extends Controller
 
     public function educationUpdate(Request $request, Education $education)
     {
+        $request->merge(['is_current' => $request->has('is_current')]);
         $validated = $request->validate([
             'school_name' => 'required|string|max:255',
             'degree' => 'required|string|max:255',
@@ -188,6 +192,7 @@ class DashboardController extends Controller
 
     public function experienceStore(Request $request)
     {
+        $request->merge(['is_current' => $request->has('is_current')]);
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'organization' => 'nullable|string|max:255',
@@ -205,6 +210,7 @@ class DashboardController extends Controller
 
     public function experienceUpdate(Request $request, Experience $experience)
     {
+        $request->merge(['is_current' => $request->has('is_current')]);
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'organization' => 'nullable|string|max:255',
@@ -235,6 +241,7 @@ class DashboardController extends Controller
 
     public function projectStore(Request $request)
     {
+        $request->merge(['featured' => $request->has('featured')]);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:projects,slug',
@@ -243,7 +250,7 @@ class DashboardController extends Controller
             'technologies_used' => 'nullable|string|max:255',
             'github_url' => 'nullable|url|max:255',
             'live_url' => 'nullable|url|max:255',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'status' => 'nullable|string|max:255',
             'featured' => 'boolean',
         ]);
@@ -258,6 +265,7 @@ class DashboardController extends Controller
 
     public function projectUpdate(Request $request, Project $project)
     {
+        $request->merge(['featured' => $request->has('featured')]);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:projects,slug,' . $project->id,
@@ -266,13 +274,15 @@ class DashboardController extends Controller
             'technologies_used' => 'nullable|string|max:255',
             'github_url' => 'nullable|url|max:255',
             'live_url' => 'nullable|url|max:255',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'status' => 'nullable|string|max:255',
             'featured' => 'boolean',
         ]);
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('projects', 'public');
+        } else {
+            unset($validated['image']);
         }
 
         $project->update($validated);
@@ -312,6 +322,7 @@ class DashboardController extends Controller
 
     public function socialLinkStore(Request $request)
     {
+        $request->merge(['is_active' => $request->has('is_active')]);
         $validated = $request->validate([
             'platform' => 'required|string|max:255',
             'url' => 'required|url|max:255',
@@ -325,6 +336,7 @@ class DashboardController extends Controller
 
     public function socialLinkUpdate(Request $request, SocialLink $socialLink)
     {
+        $request->merge(['is_active' => $request->has('is_active')]);
         $validated = $request->validate([
             'platform' => 'required|string|max:255',
             'url' => 'required|url|max:255',

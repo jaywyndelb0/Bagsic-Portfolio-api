@@ -11,6 +11,16 @@
     </button>
 </div>
 
+@if($errors->any())
+<div class="alert alert-danger rounded-4 border-0 shadow-sm mb-4">
+    <ul class="mb-0">
+        @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <div class="card p-0 border-0 shadow-sm rounded-4 overflow-hidden">
     <div class="table-responsive">
         <table class="table table-hover align-middle mb-0">

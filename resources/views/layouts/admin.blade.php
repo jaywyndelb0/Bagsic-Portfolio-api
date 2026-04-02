@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Jay Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { background-color: #f8f9fa; font-family: 'Inter', sans-serif; }
         .sidebar { height: 100vh; background-color: #fff; border-right: 1px solid #eee; position: fixed; width: 250px; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.02); }
         .main-content { margin-left: 250px; padding: 40px; }
         .nav-link { padding: 12px 15px; border-radius: 10px; color: #555; margin-bottom: 5px; font-weight: 500; transition: all 0.2s; }
