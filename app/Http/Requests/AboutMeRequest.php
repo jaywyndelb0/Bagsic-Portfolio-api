@@ -17,8 +17,8 @@ class AboutMeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'introduction' => 'required|string',
-            'career_goal' => 'nullable|string|max:255',
+            'about_me' => 'required|string',
+            'future_goals' => 'nullable|string|max:255',
             'summary' => 'nullable|string',
         ];
     }

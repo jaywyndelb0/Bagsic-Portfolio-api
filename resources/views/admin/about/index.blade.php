@@ -21,8 +21,8 @@
                 </div>
 
                 <div class="mb-5">
-                    <label for="goals" class="form-label small fw-bold text-secondary">Future Goals</label>
-                    <textarea class="form-control rounded-3 border-light bg-light" id="goals" name="goals" rows="4" required placeholder="What are your short-term and long-term goals in the tech industry?">{{ old('goals', $about->goals ?? '') }}</textarea>
+                    <label for="future_goals" class="form-label small fw-bold text-secondary">Future Goals</label>
+                    <textarea class="form-control rounded-3 border-light bg-light" id="future_goals" name="future_goals" rows="4" required placeholder="What are your short-term and long-term goals in the tech industry?">{{ old('future_goals', $about->future_goals ?? '') }}</textarea>
                 </div>
 
                 <div class="d-grid">

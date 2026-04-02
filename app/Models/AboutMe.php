@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class AboutMe extends Model
 {
     protected $fillable = [
-        'introduction',
-        'career_goal',
+        'about_me',
+        'future_goals',
         'summary',
     ];
 }

@@ -28,7 +28,7 @@
                         <i class="fas fa-bullseye text-blue-600 mr-3"></i> My Goals
                     </h3>
                     <p class="text-gray-600 text-lg leading-relaxed">
-                        {{ $about->goals ?? 'My goal is to continuously learn and build innovative solutions that solve real-world problems.' }}
+                        {{ $about->future_goals ?? 'My goal is to continuously learn and build innovative solutions that solve real-world problems.' }}
                     </p>
                 </div>
             </div>

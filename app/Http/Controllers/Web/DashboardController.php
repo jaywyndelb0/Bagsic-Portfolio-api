@@ -296,7 +296,7 @@ class DashboardController extends Controller
     {
         $validated = $request->validate([
             'about_me' => 'required|string',
-            'goals' => 'required|string',
+            'future_goals' => 'required|string',
         ]);
 
         AboutMe::updateOrCreate(['id' => 1], $validated);
