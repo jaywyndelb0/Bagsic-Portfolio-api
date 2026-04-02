@@ -11,10 +11,32 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="card p-5 border-0 shadow-sm">
-            <form action="{{ route('admin.profile.update') }}" method="POST">
+            <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 
+                <div class="mb-5 flex items-center space-x-6">
+                    <div class="shrink-0">
+                        @if($profile && $profile->profile_image)
+                            <img class="h-24 w-24 object-cover rounded-full ring-4 ring-blue-50" src="{{ asset('storage/' . $profile->profile_image) }}" alt="Current profile photo">
+                        @else
+                            <div class="h-24 w-24 rounded-full bg-blue-100 flex items-center justify-center text-blue-300">
+                                <i class="fas fa-user text-3xl"></i>
+                            </div>
+                        @endif
+                    </div>
+                    <label class="block">
+                        <span class="sr-only">Choose profile photo</span>
+                        <input type="file" name="profile_image" class="block w-full text-sm text-slate-500
+                          file:mr-4 file:py-2 file:px-4
+                          file:rounded-full file:border-0
+                          file:text-sm file:font-semibold
+                          file:bg-blue-50 file:text-blue-700
+                          hover:file:bg-blue-100
+                        "/>
+                    </label>
+                </div>
+
                 <div class="row g-4 mb-4">
                     <div class="col-md-6">
                         <label for="full_name" class="form-label small fw-bold text-secondary">Full Name</label>

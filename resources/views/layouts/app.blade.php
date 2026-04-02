@@ -4,57 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $profile->full_name ?? 'Student Portfolio' }}</title>
-    <!-- Simple Bootstrap CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #333; }
-        .navbar { background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .footer { padding: 40px 0; background-color: #fff; border-top: 1px solid #dee2e6; margin-top: 60px; }
-        .hero-section { padding: 100px 0; background-color: #fff; border-bottom: 1px solid #eee; }
-        .section-title { margin-bottom: 40px; font-weight: bold; border-bottom: 2px solid #0d6efd; display: inline-block; padding-bottom: 10px; }
-        .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s; }
-        .card:hover { transform: translateY(-5px); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="{{ route('home') }}">{{ $profile->full_name ?? 'Portfolio' }}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('skills') }}">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('projects') }}">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="{{ route('home') }}" class="text-2xl font-bold text-blue-600">
+                        {{ $profile->full_name ?? 'Portfolio' }}
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ route('home') }}" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Home</a>
+                    <a href="{{ route('about') }}" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">About</a>
+                    <a href="{{ route('skills') }}" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Skills</a>
+                    <a href="{{ route('projects') }}" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Projects</a>
+                    <a href="{{ route('contact') }}" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Contact</a>
+                    
                     @auth
-                        <li class="nav-item ms-lg-3"><a class="btn btn-primary btn-sm rounded-pill px-3" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                        <a href="{{ route('admin.dashboard') }}" class="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all shadow-md">Dashboard</a>
                     @else
-                        <li class="nav-item ms-lg-3"><a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="{{ route('login') }}">Admin Login</a></li>
+                        <a href="{{ route('login') }}" class="border-2 border-blue-600 text-blue-600 px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-50 transition-all">Login</a>
                     @endauth
-                </ul>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-500 hover:text-gray-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-6 space-y-2">
+            <a href="{{ route('home') }}" class="block text-gray-600 hover:text-blue-600 font-medium py-2">Home</a>
+            <a href="{{ route('about') }}" class="block text-gray-600 hover:text-blue-600 font-medium py-2">About</a>
+            <a href="{{ route('skills') }}" class="block text-gray-600 hover:text-blue-600 font-medium py-2">Skills</a>
+            <a href="{{ route('projects') }}" class="block text-gray-600 hover:text-blue-600 font-medium py-2">Projects</a>
+            <a href="{{ route('contact') }}" class="block text-gray-600 hover:text-blue-600 font-medium py-2">Contact</a>
+            @auth
+                <a href="{{ route('admin.dashboard') }}" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center font-semibold">Dashboard</a>
+            @else
+                <a href="{{ route('login') }}" class="block border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg text-center font-semibold">Login</a>
+            @endauth
         </div>
     </nav>
 
-    <!-- Content -->
-    <div class="main-content">
+    <!-- Main Content -->
+    <main class="min-h-screen">
         @yield('content')
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer text-center">
-        <div class="container">
-            <p class="mb-0 text-muted">&copy; {{ date('Y') }} {{ $profile->full_name ?? 'Student' }}. All rights reserved.</p>
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500">&copy; {{ date('Y') }} {{ $profile->full_name ?? 'Student' }}. Built with Laravel & Tailwind CSS.</p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

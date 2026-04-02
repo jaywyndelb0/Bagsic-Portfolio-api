@@ -39,11 +39,16 @@ class DashboardController extends Controller
             'full_name' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'bio' => 'required|string',
+            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'location' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|max:20',
         ]);
+
+        if ($request->hasFile('profile_image')) {
+            $validated['profile_image'] = $request->file('profile_image')->store('profile', 'public');
+        }
 
         Profile::updateOrCreate(['id' => 1], $validated);
         return back()->with('success', 'Profile updated successfully.');

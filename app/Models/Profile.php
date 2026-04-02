@@ -10,6 +10,7 @@ class Profile extends Model
         'full_name',
         'title',
         'bio',
+        'profile_image',
         'location',
         'address',
         'email',
