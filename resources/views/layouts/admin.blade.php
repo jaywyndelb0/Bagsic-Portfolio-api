@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        body { background-color: #f8f9fa; font-family: 'Inter', sans-serif; }
+        body { background-color: #f8f9fa; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .sidebar { height: 100vh; background-color: #fff; border-right: 1px solid #eee; position: fixed; width: 250px; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.02); }
         .main-content { margin-left: 250px; padding: 40px; }
         .nav-link { padding: 12px 15px; border-radius: 10px; color: #555; margin-bottom: 5px; font-weight: 500; transition: all 0.2s; }
